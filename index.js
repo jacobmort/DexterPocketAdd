@@ -1,5 +1,6 @@
 var rest   = require('restler');
 var _ = require('lodash');
+var Q = require('q');
 
 module.exports = {
     /**
@@ -25,22 +26,25 @@ module.exports = {
         };
 
         var result = true;
+        var promises = [];
         _.each(step.input('urls'), function(url) {
             console.log(url);
             data['url'] = url.url;
-            rest.post("https://getpocket.com/v3/add", {data : data}).on('complete', function(result, response) {
-                try {
-                    if(response.statusCode != 200) {
-                        result = result && true;
-                    }else{
-                        result = result && false;
-                    }
-                } catch(e) {
-                    /* ignore any error parsing and just return null */
-                    self.fail(e);
-                }
-            });
+            promises.push(
+              rest.post("https://getpocket.com/v3/add", {data : data}).on('complete', function(result, response) {
+                  try {
+                      if(response.statusCode != 200) {
+                          result = result && true;
+                      }else{
+                          result = result && false;
+                      }
+                  } catch(e) {
+                      /* ignore any error parsing and just return null */
+                      self.fail(e);
+                  }
+              })
+            );
         });
-        self.complete(result);
+        Q.all(promises).then(self.complete(result));
     }
 };
