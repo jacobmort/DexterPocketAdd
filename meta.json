@@ -4,25 +4,19 @@
 {
     //Required. Inputs the module expects.
     "inputs": [
-        //e.g.
-        /*
         {
-            "id": "from",
-            "title":"From",
+            "id": "url",
+            "title":"Url to Save",
             "type":"string"
         }
-        */
     ],
     //Required. Outputs the module emits.
     "outputs": [
-      //e.g.
-      /*
         {
-            "id": "from",
-            "title":"From",
-            "type":"array"
+            "id": "article",
+            "title":"Article",
+            "type":"object"
         }
-      */
     ],
     "title": "PocketAdd" /* Required.A display name for the module */
 }
