@@ -29,6 +29,7 @@ module.exports = {
         var promises = [];
         _.each(step.input('urls'), function(url) {
             data['url'] = url;
+            self.console.log(url);
             promises.push(
               rest.post("https://getpocket.com/v3/add", {data : data}).on('complete', function(result, response) {
                   try {
