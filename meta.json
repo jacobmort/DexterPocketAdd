@@ -5,7 +5,7 @@
     //Required. Inputs the module expects.
     "inputs": [
         {
-            "id": "urls",
+            "id": "url",
             "title":"Urls to Save",
             "type":"array"
         }
