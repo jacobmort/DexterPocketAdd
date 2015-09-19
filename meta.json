@@ -5,17 +5,17 @@
     //Required. Inputs the module expects.
     "inputs": [
         {
-            "id": "url",
-            "title":"Url to Save",
-            "type":"string"
+            "id": "urls",
+            "title":"Urls to Save",
+            "type":"array"
         }
     ],
     //Required. Outputs the module emits.
     "outputs": [
         {
-            "id": "article",
-            "title":"Article",
-            "type":"object"
+            "id": "result",
+            "title":"result",
+            "type":"boolean"
         }
     ],
     "title": "PocketAdd" /* Required.A display name for the module */
