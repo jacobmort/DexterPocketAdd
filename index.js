@@ -10,7 +10,7 @@ module.exports = {
      * @param {AppData} dexter Container for all data used in this workflow.
      */
     run: function(step, dexter) {
-        if(!step.input('urls')) {
+        if(!step.input('url')) {
             return this.fail({
                 message: 'Array urls is required',
                 input: step.inputs()
@@ -27,7 +27,7 @@ module.exports = {
 
         var result = true;
         var promises = [];
-        _.each(step.input('urls'), function(url) {
+        _.each(step.input('url'), function(url) {
             data['url'] = url;
             self.console.log(url);
             promises.push(
